@@ -1,26 +1,20 @@
-// NavBar.tsx
-
 interface NavBarProps {
-    onPrevious: () => void;
-    onNext: () => void;
-    showPrevious: boolean;
-    showNext: boolean;
+    pokemonList: { name: string; imgSrc?: string | null }[];
+    onPokemonSelect: (index: number) => void;
   }
   
-  function NavBar({ onPrevious, onNext, showPrevious, showNext }: NavBarProps) {
+  function NavBar({ pokemonList, onPokemonSelect }: NavBarProps) {
     return (
       <div>
-        {/* Affiche le bouton "Précédent" si showPrevious est vrai */}
-        {showPrevious && (
-          <button onClick={onPrevious}>Précédent</button>
-        )}
-        {/* Affiche le bouton "Suivant" si showNext est vrai */}
-        {showNext && (
-          <button onClick={onNext}>Suivant</button>
-        )}
+        {pokemonList.map((pokemon, index) => (
+          <button key={pokemon.name} onClick={() => onPokemonSelect(index)}>
+            {pokemon.name}
+          </button>
+        ))}
       </div>
     );
   }
   
   export default NavBar;
+  
   

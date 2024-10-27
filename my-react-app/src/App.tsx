@@ -32,27 +32,15 @@ function App() {
 
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const handlePrevious = () => {
-    setPokemonIndex((prevIndex) =>
-      prevIndex === 0 ? pokemonList.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setPokemonIndex((prevIndex) => (prevIndex + 1) % pokemonList.length);
+  const handlePokemonSelect = (index: number) => {
+    setPokemonIndex(index);
   };
 
   return (
     <>
       <div>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-        {/* Suppression des boutons de App et utilisation de NavBar */}
-        <NavBar
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-          showPrevious={pokemonIndex > 0}
-          showNext={pokemonIndex < pokemonList.length - 1}
-        />
+        <NavBar pokemonList={pokemonList} onPokemonSelect={handlePokemonSelect} />
       </div>
     </>
   );
