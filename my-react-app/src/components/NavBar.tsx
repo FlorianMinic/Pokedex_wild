@@ -7,7 +7,15 @@ interface NavBarProps {
     return (
       <div>
         {pokemonList.map((pokemon, index) => (
-          <button key={pokemon.name} onClick={() => onPokemonSelect(index)}>
+          <button
+            key={pokemon.name}
+            onClick={() => {
+              if (pokemon.name === "pikachu") {
+                alert("pika pikachu !!!");
+              }
+              onPokemonSelect(index);
+            }}
+          >
             {pokemon.name}
           </button>
         ))}
@@ -16,5 +24,6 @@ interface NavBarProps {
   }
   
   export default NavBar;
+  
   
   
